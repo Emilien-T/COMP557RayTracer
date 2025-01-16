@@ -1,0 +1,138 @@
+{
+    "resolution": [640, 480],
+    "AA_jitter": true, 
+    "AA_samples": 2,
+    "ambient": [0.1, 0.1, 0.1],
+    "camera": {
+        "position": [0.0, 4.0, 10.0],
+        "lookAt": [0.0, 0.0, 0.0],
+        "up": [0.0, 1.0, 0.0],
+        "fov": 45.0,
+        "focalLength": 10.0,
+        "aperture": 0.2,
+        "DOF_Saples": 2
+    },
+    "materials": [
+        {
+            "name": "blue",  
+            "diffuse": [0.0, 0.0, 1.0], 
+            "specular": [0.5, 0.5, 0.5],
+            "shininess": 16,
+            "hasBumpMap": true
+        },
+        {
+            "name": "red",  
+            "diffuse": [1.0, 0.0, 0.0], 
+            "specular": [1.0, 1.0, 1.0],
+            "reflection": [0.5, 0.5, 0.5],
+            "shininess": 50
+        },
+        {
+            "name": "mirror", 
+            "diffuse": [0.1, 0.1, 0.1], 
+            "specular": [0.0, 0.0, 0.0],
+            "reflection": [1.0, 1.0, 1.0],
+            "shininess": 0
+        },
+        {
+            "name": "black", 
+            "diffuse": [0.0, 0.0, 0.0], 
+            "specular": [0.0, 0.0, 0.0],
+            "shininess": 0
+        },
+        {
+            "name": "white", 
+            "diffuse": [1.0, 1.0, 1.0], 
+            "specular": [0.0, 0.0, 0.0],
+            "shininess": 0
+        },
+        {
+            "name":"green",
+            "diffuse": [0.2, 0.8, 0.2],
+            "specular": [0.5, 0.5, 0.5],
+            "shininess": 10,
+            "reflection": [0.1, 0.1, 0.1]
+        },
+        {
+            "name": "glass",
+            "diffuse": [0.1, 0.1, 0.1],
+            "specular": [0.2, 0.2, 0.2],
+            "shininess": 5,
+            "reflection": [0.1, 0.1, 0.1],
+            "ior": 1.1,
+            "transparency": 0.95
+        }
+    ],    
+    "objects": [
+        {
+            "name": "plane", "type": "plane",
+            "normal": [0.0, 1.0, 0.0],
+            "position": [0.0, 0.0, 0.0],
+            "materials": ["black","white"]
+        },
+        {
+            "name": "quad1", 
+            "type": "quadratic",
+            "matrix": [3.0, 0.0, 0.0, 0.0,
+                        0.0, 1.0, 0.0, 0.0,
+                        0.0, 0.0, 1.0, 4.0,
+                        0.0, 0.0, 0.0, -1],
+            "materials": ["blue"]
+        },
+        {
+            "name": "airplane1", 
+            "type": "mesh",
+            "filepath": "./meshes/airplane.obj",
+            "scale": 3.0, 
+            "position": [-0.8, 0.4, 1],
+            "materials": ["green"]
+        },
+        {
+            "name": "airplane2", 
+            "type": "mesh",
+            "filepath": "./meshes/airplane.obj",
+            "scale": 3.0, 
+            "position": [0.8, 0.4, 1],
+            "materials": ["green"]
+        },
+        {
+            "name": "box3", 
+            "type": "node",
+            "rotation": [0.0, -15.0, 0.0], 
+            "position": [-2.0, 1.0, 1], 
+            "scale": [0.5, 0.5, 0.5],
+            "children": [
+                {
+                    "name": "box3_geom", 
+                    "type": "box",
+                    "materials": ["red"], 
+                    "min": [-1, 0, -1], 
+                    "max": [1, 2, 1]
+                }
+            ]
+        },
+        {
+            "name": "sphere3",
+            "type": "sphere",
+            "radius": 0.8,
+            "position": [1.5, 2, 5],
+            "materials": ["glass"]
+        }
+    ],
+    "lights": [
+        {
+            "name": "light1",
+            "type": "point",
+            "position": [10.0, 5.0, 10.0],
+            "colour": [0.8, 0.2, 0.2],
+            "power": 300
+        },
+        {
+            "name": "light2",
+            "type": "point",
+            "position": [2.0, 5.0, 12.0],
+            "colour": [0.8, 0.8, 0.8],
+            "power": 100
+        }
+    ]
+}
